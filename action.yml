@@ -1,0 +1,21 @@
+name: 'Run CI in 1cmycloud'
+description: 'Runs CI in the project of 1cmycloud'
+author: 'Anatoly Busygin <anatolyb94@gmail.com>'
+inputs:
+  config:
+    description: 'CI configuration'
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.4'
+
+    - name: Run Ruby script
+      shell: bash
+      run: |
+        echo "${{ inputs.config }}" > config.yml
+        ruby ${{ github.action_path }}/run.rb config.yml
