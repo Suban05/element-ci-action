@@ -19,3 +19,4 @@ runs:
       run: |
         echo "${{ inputs.config }}" > config.yml
         ruby ${{ github.action_path }}/run.rb config.yml
+        rm config.yml
