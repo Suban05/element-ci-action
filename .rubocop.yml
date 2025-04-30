@@ -1,0 +1,43 @@
+require:
+  - rubocop-rake
+  - rubocop-rspec
+  - rubocop-performance
+
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.3
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/BlockLength:
+  AllowedMethods:
+    - context
+    - describe
+    - task
+
+Metrics/MethodLength:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 120
+
+Lint/MissingSuper:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Exclude:
+    - 'spec/**/*'
+
+RSpec/MultipleExpectations:
+  Exclude:
+    - 'spec/**/*'
+
+Metrics/ClassLength:
+  Enabled: false

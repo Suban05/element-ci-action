@@ -8,7 +8,12 @@ require_relative 'console'
 module Element
   class CI
     def initialize(config)
-      @console = Element::Console.new(config['login'], config['password'], config['server'] || "1cmycloud.com")
+      console = if config['testing']
+                  Element::Console::Fake
+                else
+                  Element::Console
+                end
+      @console = console.new(config['login'], config['password'], config['server'] || '1cmycloud.com')
       @log = Logger.new($stdout)
       @project_id = config['project_id']
       @element_version = config['element-version']
@@ -21,9 +26,9 @@ module Element
       project = @console.project_info(@project_id)
       if project['project-kind'] == 'Group'
         projects = @console.all_projects
-        project_id = projects.select do |p|
+        project_id = projects.find do |p|
           p['group-id'] == project['id'] && p['project-kind'] == 'Application'
-        end.first['id']
+        end['id']
       end
 
       assembly_info = @console.project_assembly_info(project_id, @branch)
@@ -68,11 +73,13 @@ module Element
         @log.info("App \"#{app['display-name']}\" successfully created")
       end
 
+      code = 0
       created = @console.application(app['id'])
       begin
-        run_commands(created['uri'])
+        code = 1 if run_commands(created['uri']) == 1
       rescue StandardError => e
         @log.error("Something is wrong: #{e.message}")
+        code = 1
       end
       @console.delete_application(app['id'])
       @log.info("App \"#{app['display-name']}\" is deleting...")
@@ -84,6 +91,7 @@ module Element
       @console.delete_user_list(user_list_id)
 
       @log.info("User list \"#{user_list_id}\" successfully deleted")
+      code
     end
 
     private

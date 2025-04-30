@@ -16,15 +16,15 @@ module Element
     def project_assembly_info(project_id, branch)
       uri = uri("api/v2/projects/#{project_id}/assemblies")
       assemblies = response(uri, get_request(uri))
-      assemblies.select do |assembly|
+      assemblies.find do |assembly|
         assembly['branch-name'] == branch
-      end.first
+      end
     end
 
     def project_version_info(project_id, version)
       uri = uri("api/v2/projects/#{project_id}/versions")
       versions = response(uri, get_request(uri))
-      version = versions.select { |v| v['version'] == version }.first
+      version = versions.find { |v| v['version'] == version }
     end
 
     def project_info(project_id)
@@ -150,6 +150,101 @@ module Element
       Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == 'https') do |http|
         http.request(request)
       end
+    end
+  end
+
+  class Fake
+    def initialize(login, password, server)
+      @login = login
+      @password = password
+      @server = server
+      @state = 'Running'
+    end
+
+    def project_assembly_info(_project_id, branch)
+      {
+        'assembly-version' => '1.0.0',
+        'branch-name' => branch
+      }
+    end
+
+    def project_version_info(_project_id, version)
+      {
+        'version' => version,
+        'assembly-version' => '1.0.0'
+      }
+    end
+
+    def project_info(project_id)
+      {
+        'id' => project_id,
+        'name' => 'Test Project',
+        'description' => 'Test Project Description',
+        'project-kind' => { 'project-1' => 'Group', 'project-2' => 'Application' }[project_id]
+      }
+    end
+
+    def all_projects
+      [
+        {
+          'id' => 'project-1',
+          'name' => 'Test Project 1',
+          'description' => 'Test Project 1 Description',
+          'group-id' => nil,
+          'project-kind' => 'Group'
+        },
+        {
+          'id' => 'project-2',
+          'name' => 'Test Project 2',
+          'description' => 'Test Project 2 Description',
+          'group-id' => 'project-1',
+          'project-kind' => 'Application'
+        }
+      ]
+    end
+
+    def app_state(_id)
+      {
+        'status' => @state
+      }
+    end
+
+    def create_application(_body)
+      {
+        'id' => 'app-1',
+        'uri' => "https://#{@server}/console/api/v2/applications/app-1"
+      }
+    end
+
+    def application(id)
+      {
+        'id' => id,
+        'uri' => "https://#{@server}/applications/app",
+        'status' => { 'app-1' => 'Running', 'app-2' => 'Error' }[id]
+      }
+    end
+
+    def delete_application(_id)
+      @state = 'Deleted'
+      {
+        'status' => @state
+      }
+    end
+
+    def delete_user_list(_id)
+      ''
+    end
+
+    def create_user_list(presentation, space_id)
+      {
+        'id' => 'user-list-1',
+        'presentation' => presentation,
+        'space-id' => space_id
+      }
+    end
+
+    def default_space_id
+      'default-space-id'
     end
   end
 end
