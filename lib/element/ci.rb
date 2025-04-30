@@ -8,7 +8,7 @@ require_relative 'console'
 module Element
   class CI
     def initialize(config)
-      @console = Element::Console.new(config['login'], config['password'])
+      @console = Element::Console.new(config['login'], config['password'], config['server'] || "1cmycloud.com")
       @log = Logger.new($stdout)
       @project_id = config['project_id']
       @element_version = config['element-version']

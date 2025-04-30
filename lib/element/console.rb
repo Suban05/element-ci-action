@@ -7,9 +7,10 @@ require 'base64'
 
 module Element
   class Console
-    def initialize(login, password)
+    def initialize(login, password, server)
       @login = login
       @password = password
+      @server = server
     end
 
     def project_assembly_info(project_id, branch)
@@ -106,7 +107,7 @@ module Element
     end
 
     def uri(action)
-      URI.parse("https://1cmycloud.com/console/#{action}")
+      URI.parse("https://#{server}/console/#{action}")
     end
 
     def post_request(uri, body)

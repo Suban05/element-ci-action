@@ -1,5 +1,5 @@
-name: 'Run CI in 1cmycloud'
-description: 'Runs CI in the project of 1cmycloud'
+name: 'Run CI in 1C:Element server'
+description: 'Runs CI in the project of 1C:Element server'
 author: 'Anatoly Busygin <anatolyb94@gmail.com>'
 inputs:
   config:
