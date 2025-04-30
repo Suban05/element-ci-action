@@ -107,7 +107,7 @@ module Element
     end
 
     def uri(action)
-      URI.parse("https://#{server}/console/#{action}")
+      URI.parse("https://#{@server}/console/#{action}")
     end
 
     def post_request(uri, body)
