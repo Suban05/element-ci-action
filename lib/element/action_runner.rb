@@ -13,11 +13,11 @@ module Element
 
       @actions.each do |req|
         @log.info(req['title'])
-        uri = URI("#{@url}/api/#{req['path']}")
+        uri = uri(req)
 
         request = new_request(req, uri)
         response = call_request(uri, request)
-        return 1 unless response.code.to_i == 200
+        return 1 unless ok?(response)
 
         @log.info(response.body)
         result = JSON.parse(response.body)
@@ -30,6 +30,14 @@ module Element
     end
 
     private
+
+    def ok?(response)
+      response.code.to_i == 200
+    end
+
+    def uri(action)
+      URI("#{@url}/api/#{action['path']}")
+    end
 
     def new_request(req, uri)
       case req['method'].downcase
