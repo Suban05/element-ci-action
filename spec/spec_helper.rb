@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 require 'webmock/rspec'
-require_relative '../lib/the_free_dictionary'
+require_relative '../lib/element'
+require 'vcr'
 
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
@@ -19,4 +20,8 @@ RSpec.configure do |config|
   end)
 
   config.before { VCR.turn_on! }
+end
+
+def fake_config(name)
+  YAML.load_file(File.join(__dir__, 'fixtures', name))
 end

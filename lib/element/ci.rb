@@ -4,6 +4,7 @@ require 'net/http'
 require 'logger'
 require 'uri'
 require_relative 'console'
+require_relative 'action_runner'
 
 module Element
   class CI
@@ -97,33 +98,7 @@ module Element
     private
 
     def run_commands(url)
-      return if @actions.nil?
-
-      @actions.each do |req|
-        @log.info(req['title'])
-        uri = URI("#{url}/api/#{req['path']}")
-
-        request = case req['method'].downcase
-                  when 'post'
-                    Net::HTTP::Post.new(uri)
-                  when 'get'
-                    Net::HTTP::Post.new(uri)
-                  else
-                    raise "Unsupported method: #{req['method']}"
-                  end
-        response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == 'https') do |http|
-          http.request(request)
-        end
-        return 1 unless response.code.to_i == 200
-
-        @log.info(response.body)
-        result = JSON.parse(response.body)
-        if result['code'] != 0
-          @log.error("Action #{req['name']} is failed")
-          return 1
-        end
-        return 0
-      end
+      Element::ActionRunner.new(@actions, url, @log).run
     end
   end
 end

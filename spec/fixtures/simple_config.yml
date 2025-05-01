@@ -1,0 +1,7 @@
+element-version: 7.0.5-57
+login: login
+password: password
+project_id: project-1
+branch: main
+server: test.com
+testing: true
