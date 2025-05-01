@@ -3,7 +3,7 @@ login: login
 password: password
 project_id: project-2
 branch: main
-server: app-469353.1cmycloud.com
+server: test-server.com
 testing: true
 actions:
   - 

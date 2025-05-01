@@ -6,7 +6,7 @@ RSpec.describe Element::ActionRunner do
   let(:runner) do
     described_class.new(
       config['actions'],
-      'https://app-469353.1cmycloud.com/applications/test-app',
+      'https://test-server.com/applications/test-app',
       Logger.new($stdout)
     )
   end

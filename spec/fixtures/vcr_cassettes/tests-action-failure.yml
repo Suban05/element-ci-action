@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://app-469353.1cmycloud.com/applications/test-app/api/tests
+    uri: https://test-server.com/applications/test-app/api/tests
     body:
       encoding: UTF-8
       string: ''
@@ -14,7 +14,7 @@ http_interactions:
       User-Agent:
       - Ruby
       Host:
-      - app-469353.1cmycloud.com
+      - test-server.com
   response:
     status:
       code: 200

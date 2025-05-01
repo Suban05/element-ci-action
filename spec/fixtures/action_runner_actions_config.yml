@@ -3,7 +3,7 @@ login: login
 password: password
 project_id: project-1
 branch: main
-server: test.com
+server: test-server.com
 testing: true
 actions:
   - 

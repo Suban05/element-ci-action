@@ -67,7 +67,6 @@ module Element
       while @console.app_state(app['id'])['status'] == 'Initializing'
         # wait...
       end
-
       if @console.app_state(app['id'])['status'] == 'Error'
         @log.error('An error occurred while the app was being created')
       else

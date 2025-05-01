@@ -153,6 +153,24 @@ module Element
     end
 
     class Fake
+      STATUSES = {
+        'app-1' => 'Running',
+        'app-2' => 'Running',
+        'app-3' => 'Error'
+      }.freeze
+
+      APPS = {
+        'project-1' => 'app-1',
+        'project-2' => 'app-2',
+        'project-3' => 'app-3'
+      }.freeze
+
+      GROUPS = {
+        'project-1' => 'Group',
+        'project-2' => 'Application',
+        'project-3' => 'Application'
+      }.freeze
+
       def initialize(login, password, server)
         @login = login
         @password = password
@@ -180,7 +198,7 @@ module Element
           'id' => project_id,
           'name' => 'Test Project',
           'description' => 'Test Project Description',
-          'project-kind' => { 'project-1' => 'Group', 'project-2' => 'Application' }[project_id]
+          'project-kind' => GROUPS[project_id]
         }
       end
 
@@ -191,14 +209,21 @@ module Element
             'name' => 'Test Project 1',
             'description' => 'Test Project 1 Description',
             'group-id' => nil,
-            'project-kind' => 'Group'
+            'project-kind' => GROUPS['project-1']
           },
           {
             'id' => 'project-2',
             'name' => 'Test Project 2',
             'description' => 'Test Project 2 Description',
             'group-id' => 'project-1',
-            'project-kind' => 'Application'
+            'project-kind' => GROUPS['project-2']
+          },
+          {
+            'id' => 'project-3',
+            'name' => 'Test Project 2',
+            'description' => 'Test Project 2 Description',
+            'group-id' => nil,
+            'project-kind' => GROUPS['project-3']
           }
         ]
       end
@@ -210,12 +235,11 @@ module Element
       end
 
       def create_application(body)
+        app = APPS[body['source']['image-id']]
+        @state = STATUSES[app]
         {
-          'id' => {
-            'project-1' => 'app-1',
-            'project-2' => 'app-2'
-          }[body['source']['image-id']],
-          'uri' => "https://#{@server}/console/api/v2/applications/app-1",
+          'id' => app,
+          'uri' => "https://#{@server}/console/api/v2/applications/#{app}",
           'display-name' => 'Test Application'
         }
       end
@@ -225,7 +249,7 @@ module Element
           'id' => id,
           'uri' => "https://#{@server}/applications/test-app",
           'display-name' => 'Test Application',
-          'status' => { 'app-1' => 'Error', 'app-2' => 'Running' }[id]
+          'status' => @state
         }
       end
 
