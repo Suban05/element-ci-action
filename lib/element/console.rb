@@ -223,7 +223,7 @@ module Element
       def application(id)
         {
           'id' => id,
-          'uri' => "https://#{@server}/applications/app",
+          'uri' => "https://#{@server}/applications/test-app",
           'display-name' => 'Test Application',
           'status' => { 'app-1' => 'Error', 'app-2' => 'Running' }[id]
         }

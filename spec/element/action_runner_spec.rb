@@ -12,7 +12,7 @@ RSpec.describe Element::ActionRunner do
   end
 
   context 'with actions' do
-    let(:config) { fake_config('action_runner_config.yml') }
+    let(:config) { fake_config('config_with_action.yml') }
 
     it 'executes actions' do
       VCR.use_cassette('tests-action-success') do
@@ -51,6 +51,16 @@ RSpec.describe Element::ActionRunner do
     it 'throws an exception' do
       VCR.use_cassette('tests-action-success') do
         expect { runner.run }.to raise_error(RuntimeError, 'Unsupported method: delete')
+      end
+    end
+  end
+
+  context 'with many actions' do
+    let(:config) { fake_config('action_runner_actions_config.yml') }
+
+    it 'processes all actions' do
+      VCR.use_cassette('tests-action-success') do
+        expect(runner.run).to eq(0)
       end
     end
   end

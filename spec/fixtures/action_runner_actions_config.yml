@@ -11,3 +11,8 @@ actions:
     title: Run tests
     method: post
     path: tests
+  - 
+    name: Status
+    title: Check status
+    method: get
+    path: status
