@@ -1,0 +1,717 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://test-server.com/console/api/v2/spaces
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - test-server.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Vary:
+      - Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+      Content-Length:
+      - '2248'
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1 ; mode=block
+      Referrer-Policy:
+      - no-referrer
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Envoy-Upstream-Service-Time:
+      - '7'
+      Proxy-Node-Id:
+      - aquilonis-proxy-02-z1-msk4.e1c-ops.com
+      Set-Cookie:
+      - sticky-host="MTkyLjE2OC41NS45NzoxMDA2NA=="; Path=/; HttpOnly
+      Date:
+      - Thu, 01 May 2025 07:05:21 GMT
+      Server:
+      - 1C
+      X-Forwarding-Server:
+      - 1C-ECRUN HTTP LoadBalancer (v2) [747-1] (aquilonis-proxy-02-z1-msk4.e1c-ops.com)
+    body:
+      encoding: UTF-8
+      string: |-
+        [
+          {
+            "id": "space-1"
+          }
+        ]
+  recorded_at: Thu, 02 May 2025 07:05:21 GMT
+
+- request:
+    method: get
+    uri: https://test-server.com/console/api/v2/projects/project-1/assemblies
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - test-server.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Vary:
+      - Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+      Content-Length:
+      - '2248'
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1 ; mode=block
+      Referrer-Policy:
+      - no-referrer
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Envoy-Upstream-Service-Time:
+      - '7'
+      Proxy-Node-Id:
+      - aquilonis-proxy-02-z1-msk4.e1c-ops.com
+      Set-Cookie:
+      - sticky-host="MTkyLjE2OC41NS45NzoxMDA2NA=="; Path=/; HttpOnly
+      Date:
+      - Thu, 01 May 2025 07:05:21 GMT
+      Server:
+      - 1C
+      X-Forwarding-Server:
+      - 1C-ECRUN HTTP LoadBalancer (v2) [747-1] (aquilonis-proxy-02-z1-msk4.e1c-ops.com)
+    body:
+      encoding: UTF-8
+      string: |-
+        [
+          {
+            "assembly-version": "1.0.0",
+            "project-name": "project-1",
+            "branch-name": "main"
+          }
+        ]
+  recorded_at: Thu, 02 May 2025 07:05:21 GMT
+
+- request:
+    method: get
+    uri: https://test-server.com/console/api/v2/projects/project-1/versions
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - test-server.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Vary:
+      - Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+      Content-Length:
+      - '2248'
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1 ; mode=block
+      Referrer-Policy:
+      - no-referrer
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Envoy-Upstream-Service-Time:
+      - '7'
+      Proxy-Node-Id:
+      - aquilonis-proxy-02-z1-msk4.e1c-ops.com
+      Set-Cookie:
+      - sticky-host="MTkyLjE2OC41NS45NzoxMDA2NA=="; Path=/; HttpOnly
+      Date:
+      - Thu, 01 May 2025 07:05:21 GMT
+      Server:
+      - 1C
+      X-Forwarding-Server:
+      - 1C-ECRUN HTTP LoadBalancer (v2) [747-1] (aquilonis-proxy-02-z1-msk4.e1c-ops.com)
+    body:
+      encoding: UTF-8
+      string: |-
+        [
+          {
+            "id": "id",
+            "image-type": "image-type",
+            "version": "1.0.0"
+          }
+        ]
+  recorded_at: Thu, 02 May 2025 07:05:21 GMT
+
+- request:
+    method: get
+    uri: https://test-server.com/console/api/v2/projects/project-1
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - test-server.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Vary:
+      - Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+      Content-Length:
+      - '2248'
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1 ; mode=block
+      Referrer-Policy:
+      - no-referrer
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Envoy-Upstream-Service-Time:
+      - '7'
+      Proxy-Node-Id:
+      - aquilonis-proxy-02-z1-msk4.e1c-ops.com
+      Set-Cookie:
+      - sticky-host="MTkyLjE2OC41NS45NzoxMDA2NA=="; Path=/; HttpOnly
+      Date:
+      - Thu, 01 May 2025 07:05:21 GMT
+      Server:
+      - 1C
+      X-Forwarding-Server:
+      - 1C-ECRUN HTTP LoadBalancer (v2) [747-1] (aquilonis-proxy-02-z1-msk4.e1c-ops.com)
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "id": "id",
+          "name": "project-1",
+          "group-id": "group-1",
+          "project-kind": "Application"
+        }
+  recorded_at: Thu, 02 May 2025 07:05:21 GMT
+
+- request:
+    method: get
+    uri: https://test-server.com/console/api/v2/projects
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - test-server.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Vary:
+      - Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+      Content-Length:
+      - '2248'
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1 ; mode=block
+      Referrer-Policy:
+      - no-referrer
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Envoy-Upstream-Service-Time:
+      - '7'
+      Proxy-Node-Id:
+      - aquilonis-proxy-02-z1-msk4.e1c-ops.com
+      Set-Cookie:
+      - sticky-host="MTkyLjE2OC41NS45NzoxMDA2NA=="; Path=/; HttpOnly
+      Date:
+      - Thu, 01 May 2025 07:05:21 GMT
+      Server:
+      - 1C
+      X-Forwarding-Server:
+      - 1C-ECRUN HTTP LoadBalancer (v2) [747-1] (aquilonis-proxy-02-z1-msk4.e1c-ops.com)
+    body:
+      encoding: UTF-8
+      string: |-
+        [
+          {
+            "id": "id",
+            "name": "project-1",
+            "group-id": "group-1",
+            "project-kind": "Application"
+          }
+        ]
+  recorded_at: Thu, 02 May 2025 07:05:21 GMT
+
+- request:
+    method: get
+    uri: https://test-server.com/console/api/v2/applications/id/status
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - test-server.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Vary:
+      - Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+      Content-Length:
+      - '2248'
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1 ; mode=block
+      Referrer-Policy:
+      - no-referrer
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Envoy-Upstream-Service-Time:
+      - '7'
+      Proxy-Node-Id:
+      - aquilonis-proxy-02-z1-msk4.e1c-ops.com
+      Set-Cookie:
+      - sticky-host="MTkyLjE2OC41NS45NzoxMDA2NA=="; Path=/; HttpOnly
+      Date:
+      - Thu, 01 May 2025 07:05:21 GMT
+      Server:
+      - 1C
+      X-Forwarding-Server:
+      - 1C-ECRUN HTTP LoadBalancer (v2) [747-1] (aquilonis-proxy-02-z1-msk4.e1c-ops.com)
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "status": "Running"
+        }
+  recorded_at: Thu, 02 May 2025 07:05:21 GMT
+
+- request:
+    method: get
+    uri: https://test-server.com/console/api/v2/applications/id
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - test-server.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Vary:
+      - Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+      Content-Length:
+      - '2248'
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1 ; mode=block
+      Referrer-Policy:
+      - no-referrer
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Envoy-Upstream-Service-Time:
+      - '7'
+      Proxy-Node-Id:
+      - aquilonis-proxy-02-z1-msk4.e1c-ops.com
+      Set-Cookie:
+      - sticky-host="MTkyLjE2OC41NS45NzoxMDA2NA=="; Path=/; HttpOnly
+      Date:
+      - Thu, 01 May 2025 07:05:21 GMT
+      Server:
+      - 1C
+      X-Forwarding-Server:
+      - 1C-ECRUN HTTP LoadBalancer (v2) [747-1] (aquilonis-proxy-02-z1-msk4.e1c-ops.com)
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "id": "id",
+          "name": "application-name"
+        }
+  recorded_at: Thu, 02 May 2025 07:05:21 GMT
+
+- request:
+    method: post
+    uri: https://test-server.com/console/api/v2/applications
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - test-server.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Vary:
+      - Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+      Content-Length:
+      - '2248'
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1 ; mode=block
+      Referrer-Policy:
+      - no-referrer
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Envoy-Upstream-Service-Time:
+      - '7'
+      Proxy-Node-Id:
+      - aquilonis-proxy-02-z1-msk4.e1c-ops.com
+      Set-Cookie:
+      - sticky-host="MTkyLjE2OC41NS45NzoxMDA2NA=="; Path=/; HttpOnly
+      Date:
+      - Thu, 01 May 2025 07:05:21 GMT
+      Server:
+      - 1C
+      X-Forwarding-Server:
+      - 1C-ECRUN HTTP LoadBalancer (v2) [747-1] (aquilonis-proxy-02-z1-msk4.e1c-ops.com)
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "id": "id",
+          "name": "application-name"
+        }
+  recorded_at: Thu, 02 May 2025 07:05:21 GMT
+
+- request:
+    method: delete
+    uri: https://test-server.com/console/api/v2/applications/id
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - test-server.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Vary:
+      - Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+      Content-Length:
+      - '2248'
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1 ; mode=block
+      Referrer-Policy:
+      - no-referrer
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Envoy-Upstream-Service-Time:
+      - '7'
+      Proxy-Node-Id:
+      - aquilonis-proxy-02-z1-msk4.e1c-ops.com
+      Set-Cookie:
+      - sticky-host="MTkyLjE2OC41NS45NzoxMDA2NA=="; Path=/; HttpOnly
+      Date:
+      - Thu, 01 May 2025 07:05:21 GMT
+      Server:
+      - 1C
+      X-Forwarding-Server:
+      - 1C-ECRUN HTTP LoadBalancer (v2) [747-1] (aquilonis-proxy-02-z1-msk4.e1c-ops.com)
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "id": "id",
+          "name": "application-name"
+        }
+  recorded_at: Thu, 02 May 2025 07:05:21 GMT
+
+- request:
+    method: post
+    uri: https://test-server.com/console/api/v2/user-lists
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - test-server.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Vary:
+      - Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+      Content-Length:
+      - '2248'
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1 ; mode=block
+      Referrer-Policy:
+      - no-referrer
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Envoy-Upstream-Service-Time:
+      - '7'
+      Proxy-Node-Id:
+      - aquilonis-proxy-02-z1-msk4.e1c-ops.com
+      Set-Cookie:
+      - sticky-host="MTkyLjE2OC41NS45NzoxMDA2NA=="; Path=/; HttpOnly
+      Date:
+      - Thu, 01 May 2025 07:05:21 GMT
+      Server:
+      - 1C
+      X-Forwarding-Server:
+      - 1C-ECRUN HTTP LoadBalancer (v2) [747-1] (aquilonis-proxy-02-z1-msk4.e1c-ops.com)
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "id": "id"
+        }
+  recorded_at: Thu, 02 May 2025 07:05:21 GMT
+
+- request:
+    method: delete
+    uri: https://test-server.com/console/api/v2/user-lists/id
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - test-server.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Vary:
+      - Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+      Content-Length:
+      - '2248'
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1 ; mode=block
+      Referrer-Policy:
+      - no-referrer
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Envoy-Upstream-Service-Time:
+      - '7'
+      Proxy-Node-Id:
+      - aquilonis-proxy-02-z1-msk4.e1c-ops.com
+      Set-Cookie:
+      - sticky-host="MTkyLjE2OC41NS45NzoxMDA2NA=="; Path=/; HttpOnly
+      Date:
+      - Thu, 01 May 2025 07:05:21 GMT
+      Server:
+      - 1C
+      X-Forwarding-Server:
+      - 1C-ECRUN HTTP LoadBalancer (v2) [747-1] (aquilonis-proxy-02-z1-msk4.e1c-ops.com)
+    body:
+      encoding: UTF-8
+      string: ""
+  recorded_at: Thu, 02 May 2025 07:05:21 GMT
+
+- request:
+    method: post
+    uri: https://test-server.com/console/sys/token
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - test-server.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Vary:
+      - Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+      Content-Length:
+      - '2248'
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1 ; mode=block
+      Referrer-Policy:
+      - no-referrer
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Envoy-Upstream-Service-Time:
+      - '7'
+      Proxy-Node-Id:
+      - aquilonis-proxy-02-z1-msk4.e1c-ops.com
+      Set-Cookie:
+      - sticky-host="MTkyLjE2OC41NS45NzoxMDA2NA=="; Path=/; HttpOnly
+      Date:
+      - Thu, 01 May 2025 07:05:21 GMT
+      Server:
+      - 1C
+      X-Forwarding-Server:
+      - 1C-ECRUN HTTP LoadBalancer (v2) [747-1] (aquilonis-proxy-02-z1-msk4.e1c-ops.com)
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "id_token": "id_token",
+          "token_type": "Bearer",
+          "access_token": "access_token"
+        }
+  recorded_at: Thu, 02 May 2025 07:05:21 GMT

@@ -24,7 +24,7 @@ module Element
     def project_version_info(project_id, version)
       uri = uri("api/v2/projects/#{project_id}/versions")
       versions = response(uri, get_request(uri))
-      version = versions.find { |v| v['version'] == version }
+      versions.find { |v| v['version'] == version }
     end
 
     def project_info(project_id)
@@ -64,6 +64,7 @@ module Element
       uri = uri("api/v2/user-lists/#{id}")
 
       call_request(uri, delete_request(uri))
+      {}
     end
 
     def create_user_list(presentation, space_id)
@@ -261,7 +262,7 @@ module Element
       end
 
       def delete_user_list(_id)
-        ''
+        {}
       end
 
       def create_user_list(presentation, space_id)
