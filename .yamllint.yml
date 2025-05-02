@@ -2,3 +2,6 @@
 extends: default
 ignore: |
   spec/fixtures/vcr_cassettes/*
+rules:
+  line-length:
+    max: 120
