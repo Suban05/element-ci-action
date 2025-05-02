@@ -1,3 +1,4 @@
+---
 name: 'Run CI in 1C:Element server'
 description: 'Runs CI in the project of 1C:Element server'
 author: 'Anatoly Busygin <anatolyb94@gmail.com>'

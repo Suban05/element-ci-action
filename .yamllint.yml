@@ -1,0 +1,4 @@
+---
+extends: default
+ignore: |
+  spec/fixtures/vcr_cassettes/*
