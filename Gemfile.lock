@@ -15,6 +15,7 @@ GEM
     json (2.11.3)
     language_server-protocol (3.17.0.4)
     lint_roller (1.1.0)
+    logger (1.7.0)
     parallel (1.27.0)
     parser (3.3.8.0)
       ast (~> 2.4.1)
@@ -85,6 +86,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  logger
   rake
   rspec
   rubocop

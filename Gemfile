@@ -2,8 +2,8 @@
 
 source 'https://rubygems.org'
 
+gem 'logger'
 gem 'rake'
-
 group :test do
   gem 'rspec'
   gem 'rubocop'
