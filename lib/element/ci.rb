@@ -41,6 +41,8 @@ module Element
       delete_application(app)
 
       delete_user_list(user_list_id)
+      raise 'Errors occurred during the check' unless code.zero?
+
       code
     end
 
@@ -64,12 +66,12 @@ module Element
 
       app = @console.create_application(
         {
-          'display-name' => 'test-app',
+          'display-name' => 'test-app-dev',
           'technology-version' => @element_version,
           'default-user-list' => user_list_id,
           'user-lists' => [user_list_id],
           'space-id' => space_id,
-          'publication-context' => 'test-app',
+          'publication-context' => 'test-app-dev',
           'development-mode' => true,
           'autostarting-scheduled-jobs' => true,
           'autostarting-esb' => false,

@@ -23,13 +23,13 @@ RSpec.describe Element::CI do
     end
   end
 
-  context 'when has an error' do
+  context 'when has any error' do
     let(:config) { fake_config('unsupported_action_runner_config.yml') }
 
-    it 'proccesses the error' do
+    it 'throws an exception' do
       ci = described_class.new(config)
       VCR.use_cassette('tests-action-success') do
-        expect(ci.run).to eq(1)
+        expect { ci.run }.to raise_error(RuntimeError)
       end
     end
   end
