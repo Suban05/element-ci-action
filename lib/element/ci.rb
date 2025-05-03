@@ -25,16 +25,11 @@ module Element
 
     def run
       space_id = @console.default_space_id
-
       user_list_id = create_user_list(space_id)
-
       app = create_application(user_list_id, space_id)
-
       created = @console.application(app['id'])
       run_commands(created)
-
       delete_application(app)
-
       delete_user_list(user_list_id)
       fail! unless success?
 
@@ -46,11 +41,11 @@ module Element
     def run_commands(app)
       if success?
         result = Element::ActionRunner.new(@actions, app['uri'], @log).run
-        set_error_status unless result.zero?
+        error! unless result.zero?
       end
     rescue StandardError => e
       @log.error("Something is wrong: #{e.message}")
-      set_error_status
+      error!
     end
 
     def create_user_list(space_id)
@@ -61,10 +56,8 @@ module Element
 
     def create_application(user_list_id, space_id)
       project = project_id_from_console
-
       assembly_info = @console.project_assembly_info(project, @branch)
       version_info = @console.project_version_info(project, assembly_info['assembly-version'])
-
       app = @console.create_application(
         {
           'display-name' => 'test-app-dev',
@@ -86,23 +79,20 @@ module Element
           }
         }
       )
-
-      await_for_app_creation(app)
-
+      wait(app, 'Initializing')
       if @console.app_state(app['id'])['status'] == 'Error'
         @log.error('An error occurred while the app was being created')
-        set_error_status
+        error!
       else
         @log.info("App \"#{app['display-name']}\" successfully created")
       end
-
       app
     end
 
-    def await_for_app_creation(app)
-      @log.info("App \"#{app['display-name']}\" is creating...")
-      while @console.app_state(app['id'])['status'] == 'Initializing'
-        # wait...
+    def wait(app, state)
+      @log.info("App \"#{app['display-name']}\" is #{state.downcase}...")
+      loop do
+        break unless @console.app_state(app['id'])['status'] == state
       end
     end
 
@@ -120,23 +110,16 @@ module Element
 
     def delete_user_list(id)
       @console.delete_user_list(id)
-
       @log.info("User list \"#{id}\" successfully deleted")
     end
 
     def delete_application(app)
       @console.delete_application(app['id'])
-
-      @log.info("App \"#{app['display-name']}\" is deleting...")
-
-      while @console.app_state(app['id'])['status'] == 'Deleting'
-        # wait...
-      end
-
+      wait(app, 'Deleting')
       @log.info("App \"#{app['display-name']}\" successfully deleted")
     end
 
-    def set_error_status
+    def error!
       @code = 1
     end
 
