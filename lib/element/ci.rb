@@ -20,6 +20,7 @@ module Element
       @element_version = config['element-version']
       @branch = config['branch']
       @actions = config['actions']
+      @code = 0
     end
 
     def run
@@ -29,27 +30,27 @@ module Element
 
       app = create_application(user_list_id, space_id)
 
-      code = 0
       created = @console.application(app['id'])
-      begin
-        code = 1 if run_commands(created['uri']) == 1
-      rescue StandardError => e
-        @log.error("Something is wrong: #{e.message}")
-        code = 1
-      end
+      run_commands(created)
 
       delete_application(app)
 
       delete_user_list(user_list_id)
-      raise 'Errors occurred during the check' unless code.zero?
+      fail!
 
-      code
+      @code
     end
 
     private
 
-    def run_commands(url)
-      Element::ActionRunner.new(@actions, url, @log).run
+    def run_commands(app)
+      if success?
+        result = Element::ActionRunner.new(@actions, app['uri'], @log).run
+        set_error_status unless result.zero?
+      end
+    rescue StandardError => e
+      @log.error("Something is wrong: #{e.message}")
+      set_error_status
     end
 
     def create_user_list(space_id)
@@ -90,6 +91,7 @@ module Element
 
       if @console.app_state(app['id'])['status'] == 'Error'
         @log.error('An error occurred while the app was being created')
+        set_error_status
       else
         @log.info("App \"#{app['display-name']}\" successfully created")
       end
@@ -132,6 +134,18 @@ module Element
       end
 
       @log.info("App \"#{app['display-name']}\" successfully deleted")
+    end
+
+    def set_error_status
+      @code = 1
+    end
+
+    def success?
+      @code.zero?
+    end
+
+    def fail!
+      raise 'Errors occurred during the check' unless success?
     end
   end
 end

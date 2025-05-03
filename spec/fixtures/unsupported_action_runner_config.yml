@@ -2,7 +2,7 @@
 element-version: 7.0.5-57
 login: login
 password: password
-project_id: project-3
+project_id: project-2
 branch: main
 server: test-server.com
 testing: true
