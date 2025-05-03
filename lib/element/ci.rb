@@ -36,7 +36,7 @@ module Element
       delete_application(app)
 
       delete_user_list(user_list_id)
-      fail!
+      fail! unless success?
 
       @code
     end
@@ -145,7 +145,7 @@ module Element
     end
 
     def fail!
-      raise 'Errors occurred during the check' unless success?
+      raise 'Errors occurred during the check'
     end
   end
 end
