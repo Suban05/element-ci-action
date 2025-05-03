@@ -17,11 +17,9 @@ module Element
 
         request = new_request(req, uri)
         response = call_request(uri, request)
-        return 1 unless ok?(response)
-
         @log.info(response.body)
-        result = JSON.parse(response.body)
-        if result['code'] != 0
+
+        unless ok?(response)
           @log.error("Action #{req['name']} is failed")
           return 1
         end

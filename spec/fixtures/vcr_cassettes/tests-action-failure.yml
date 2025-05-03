@@ -17,7 +17,7 @@ http_interactions:
       - test-server.com
   response:
     status:
-      code: 200
+      code: 422
       message: OK
     headers:
       Vary:
