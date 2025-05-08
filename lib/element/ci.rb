@@ -18,7 +18,7 @@ module Element
       @log = Logger.new($stdout)
       @project_id = config['project_id']
       @element_version = config['element-version']
-      set_branch(config)
+      fill_branch(config)
       @actions = config['actions']
       @code = 0
     end
