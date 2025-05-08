@@ -18,7 +18,7 @@ module Element
       @log = Logger.new($stdout)
       @project_id = config['project_id']
       @element_version = config['element-version']
-      @branch = config['branch']
+      set_branch(config)
       @actions = config['actions']
       @code = 0
     end
@@ -135,6 +135,14 @@ module Element
 
     def fail!
       raise 'Errors occurred during the check'
+    end
+
+    def fill_branch(config)
+      @branch = if config['head_ref'].nil? || config['head_ref'].empty?
+                  config['branch']
+                else
+                  config['head_ref']
+                end
     end
   end
 end

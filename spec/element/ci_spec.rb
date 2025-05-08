@@ -42,4 +42,22 @@ RSpec.describe Element::CI do
       end
     end
   end
+
+  context 'when ci runs on pr' do
+    let(:config) { fake_config('config_pr.yml') }
+
+    it 'uses head_ref' do
+      expect(ci.run).to eq(0)
+      expect(ci.instance_variable_get(:@branch)).to eq('feature/branch')
+    end
+  end
+
+  context 'when ci runs without pr' do
+    let(:config) { fake_config('simple_config.yml') }
+
+    it 'uses branch' do
+      expect(ci.run).to eq(0)
+      expect(ci.instance_variable_get(:@branch)).to eq('main')
+    end
+  end
 end
