@@ -56,7 +56,7 @@ module Element
 
     def create_application(user_list_id, space_id)
       project = project_id_from_console
-      assembly_info = @console.project_assembly_info(project, @branch)
+      assembly_info = project_assembly_info(project)
       version_info = @console.project_version_info(project, assembly_info['assembly-version'])
       app = @console.create_application(
         {
@@ -87,6 +87,12 @@ module Element
         @log.info("App \"#{app['display-name']}\" successfully created")
       end
       app
+    end
+
+    def project_assembly_info(project)
+      info = @console.project_assembly_info(project, @branch)
+      @log.info("The project's assembly version is #{info['assembly-version']}")
+      info
     end
 
     def wait(app, state)
