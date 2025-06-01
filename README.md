@@ -30,7 +30,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Run CI
-        uses: Suban05/element-ci-action@v0.0.6
+        uses: Suban05/element-ci-action@v0.0.9
         with:
           config: |
             version: 7.0.5-57
