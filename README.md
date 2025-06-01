@@ -94,7 +94,7 @@ bundle
 bundle exec rake
 ```
 
-# Element-ci-action (Russian)
+## Element-ci-action (Russian)
 
 **GitHub Action** для автоматизации CI-процессов в облачной системе разработки [1С:Предприятие.Элемент](https://1cmycloud.com/).
 
