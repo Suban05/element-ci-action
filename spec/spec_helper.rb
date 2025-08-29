@@ -17,6 +17,7 @@ RSpec.configure do |config|
 
   WebMock::API.prepend(Module.new do
     extend self
+
     # disable VCR when a WebMock stub is created
     # for clearer spec failure messaging
     def stub_request(*args)
